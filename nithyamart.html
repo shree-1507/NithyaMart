@@ -3,470 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NithyaMart</title>
-
-
-
+<meta name="theme-color" content="#6246e5">
+<title>NithyaMart — Everyday finds</title>
 <style>
-:root{
-  --ink:#202033;--ink-soft:#4e4d64;--brand:#5b35d5;--brand-dark:#4021ad;
-  --accent:#ff784f;--accent-soft:#fff0e9;--bg:#f6f4fb;--surface:#ffffff;
-  --surface-2:#f0edfa;--line:#e6e1f1;--muted:#77758a;--danger:#c93645;
-  --success:#16805d;--shadow:0 18px 50px rgba(39,27,82,.09);--radius:22px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.6}
-button,input,select,textarea{font:inherit}
-button{border:0;border-radius:12px;background:var(--brand);color:#fff;padding:12px 18px;font-weight:750;cursor:pointer;transition:transform .18s,background .18s,box-shadow .18s}
-button:hover{background:var(--brand-dark);transform:translateY(-2px);box-shadow:0 9px 22px #5b35d52b}
-button:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #b8a8f6;outline-offset:3px}
-a{color:var(--brand);font-weight:750;text-decoration:none}
-a:hover{text-decoration:underline}
-body:before{content:"";display:block;height:5px;background:linear-gradient(90deg,var(--brand) 0 58%,var(--accent) 58% 100%)}
-header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:82px;padding:14px max(4%,calc((100% - 1320px)/2));background:#fffdfdf2;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-header h2{margin:0;color:var(--ink);font-size:26px;font-weight:950;letter-spacing:-1.2px;cursor:pointer;white-space:nowrap}
-header h2:before{content:"N";display:inline-grid;place-items:center;width:39px;height:39px;margin-right:10px;border-radius:13px;background:var(--brand);color:white;font-size:22px;letter-spacing:-1px;vertical-align:middle;box-shadow:0 7px 16px #5b35d52e}
-nav{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
-nav button{background:transparent;color:var(--ink-soft);border:1px solid transparent;border-radius:10px;padding:10px 13px;font-size:13px;box-shadow:none}
-nav button:hover{background:var(--surface-2);color:var(--brand);border-color:var(--line);transform:none;box-shadow:none}
-nav button:last-child{background:var(--ink);color:#fff}
-nav button:last-child:hover{background:var(--brand)}
-.container{width:min(1320px,92%);margin:34px auto 72px;min-height:58vh}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
-.auth-box{width:min(500px,100%);margin:48px auto;padding:clamp(25px,4vw,42px);position:relative;overflow:hidden}
-.auth-box:after{content:"";position:absolute;right:-48px;top:-58px;width:145px;height:145px;border-radius:50%;background:var(--surface-2);z-index:0}
-.auth-box h2{position:relative;z-index:1;margin:0 0 8px;color:var(--ink);font-size:32px;line-height:1.2;letter-spacing:-1px}
-.auth-box:before{content:"NITHYAMART  /  YOUR ACCOUNT";position:relative;z-index:1;display:block;margin-bottom:13px;color:var(--brand);font-size:10px;font-weight:900;letter-spacing:1.6px}
-label{display:block;margin:17px 0 7px;font-size:12px;font-weight:850;color:var(--ink-soft);letter-spacing:.2px}
-input,select,textarea{width:100%;border:1px solid #ded9eb;border-radius:12px;padding:13px 14px;font-size:14px;background:#fff;color:var(--ink);outline:none;transition:border-color .18s,box-shadow .18s}
-input:focus,select:focus,textarea:focus{border-color:#8a70e8;box-shadow:0 0 0 4px #5b35d512}
-input::placeholder,textarea::placeholder{color:#aaa7b8}
-textarea{resize:vertical;min-height:100px}
-.auth-box>button{width:100%;margin-top:19px;min-height:47px}
-.auth-box .small{margin-top:18px}
-.small{font-size:13px;color:var(--muted);line-height:1.65}
-.password-box,.password-wrap{display:flex;align-items:stretch;gap:8px}
-.password-box input,.password-wrap input{flex:1;min-width:0}
-.password-box .show-password,.password-toggle{width:auto;min-width:76px;margin:0;padding:0 13px;background:var(--surface-2);color:var(--brand);border:1px solid var(--line);box-shadow:none}
-.password-box .show-password:hover,.password-toggle:hover{background:#e6defb;transform:none;box-shadow:none}
-.hero{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:35px;overflow:hidden;min-height:365px;margin-bottom:30px;padding:clamp(30px,5vw,66px);border-radius:30px;background:linear-gradient(115deg,#211746 0%,#3b267c 58%,#6546d8 100%);color:#fff;box-shadow:0 24px 55px #34205d25}
-.hero:before{content:"";position:absolute;z-index:-1;right:7%;top:8%;width:245px;height:245px;border-radius:50%;background:linear-gradient(145deg,#ffb48d,#ff784f);box-shadow:0 0 0 25px #ffffff0a,0 0 0 60px #ffffff08}
-.hero:after{content:"";position:absolute;z-index:-1;right:10%;bottom:-150px;width:350px;height:350px;border:1px solid #ffffff32;border-radius:50%;box-shadow:0 0 0 35px #ffffff08,0 0 0 75px #ffffff06}
-.hero>div:first-child{max-width:760px}
-.hero h1{max-width:740px;margin:17px 0 15px;font-size:clamp(36px,5vw,62px);line-height:1.02;letter-spacing:-2.5px}
-.hero p{max-width:650px;margin:0;color:#e6e0fa;font-size:15px;line-height:1.85}
-.hero .badge{display:inline-block;background:#fff;color:var(--brand);border:0;padding:7px 12px;border-radius:7px;font-size:10px;letter-spacing:1.4px;font-weight:950}
-.hero-img{z-index:1;flex:none;width:170px;height:200px;border:1px solid #ffffff45;border-radius:28px;background:linear-gradient(150deg,#ffffff42,#ffffff08);transform:rotate(7deg);box-shadow:inset 0 0 45px #ffffff0d,0 22px 50px #170f3438}
-.hero-img:before{content:"NM";display:grid;place-items:center;width:100%;height:100%;font-size:52px;font-weight:950;letter-spacing:-5px;color:#ffffffd9}
-.toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 25px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 7px 24px #31205408}
-.toolbar>input{flex:1;max-width:500px;min-width:220px;background:#faf9fd}
-.chips{display:flex;gap:7px;flex-wrap:wrap}
-.chip{background:#fff;color:var(--ink-soft);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12px;box-shadow:none}
-.chip.active,.chip:hover{background:var(--brand);color:#fff;border-color:var(--brand);transform:none;box-shadow:none}
-.badge{display:inline-block;border-radius:8px;padding:5px 9px;background:#eee9ff;color:var(--brand);font-size:12px;font-weight:850}
-.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.product{display:flex;flex-direction:column;min-width:0;overflow:hidden;padding:12px;background:#fff;border:1px solid var(--line);border-radius:20px;transition:transform .2s,border-color .2s,box-shadow .2s}
-.product:hover{transform:translateY(-5px);border-color:#c9bdf7;box-shadow:0 20px 38px #34205d14}
-.product img{display:block;width:100%;height:220px;object-fit:contain;margin:0 0 14px;padding:15px;border-radius:14px;background:linear-gradient(145deg,#f7f5fc,#eeebf7)}
-.product h3{margin:4px 0 7px;font-size:16px;line-height:1.4;letter-spacing:-.25px;overflow-wrap:anywhere}
-.product p{margin:5px 0;line-height:1.5}
-.product .small{display:-webkit-box;min-height:38px;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.product .price{margin-top:auto;padding-top:11px;color:var(--brand);font-size:23px;font-weight:950;letter-spacing:-.7px}
-.product .stock{color:var(--success);font-size:12px;font-weight:800}
-.product .seller{font-size:12px;color:var(--muted)}
-.product input[type=number]{margin-top:8px}
-.product button{width:100%;margin-top:10px}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-section h2{letter-spacing:-.7px}
-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-th,td{padding:14px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
-th{background:#f0edfa;color:var(--ink-soft);font-size:11px;font-weight:950;letter-spacing:.8px;text-transform:uppercase}
-tr:last-child td{border-bottom:0}
-.message{max-width:900px;margin:0 auto 20px;padding:14px 17px;border:1px solid #c8e6d7;border-radius:13px;background:#edfaf3;color:#176044;font-weight:750}
-.password-rules{margin-top:8px;padding:12px 14px;border-radius:12px;background:#f7f5fc;border:1px solid var(--line);font-size:13px;line-height:1.7}
-.good{color:var(--success)}.bad{color:var(--danger)}
-.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{width:auto}
-.hidden{display:none!important}
-.empty{grid-column:1/-1;text-align:center;padding:54px 20px;border:1px dashed #c9c1e0;background:#fff;border-radius:18px;color:var(--muted)}
-.seller-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
-.seller-product-card{display:flex;flex-direction:column;gap:9px;min-width:0;padding:16px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 7px 24px #31205408;transition:.2s}
-.seller-product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.seller-product-card img{width:100%;height:180px;object-fit:contain;background:#f1eef9;border-radius:12px}
-.seller-product-card h3{margin:4px 0;overflow-wrap:anywhere}
-.seller-product-card .actions{margin-top:auto}.seller-product-card .actions button{flex:1}
-.image-uploader{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center;margin:12px 0 16px;padding:15px;border:1px dashed #c9c1e0;border-radius:15px;background:#faf9fd}
-.image-preview{width:150px;height:130px;object-fit:contain;background:#f0edfa;border:1px solid var(--line);border-radius:12px}
-.image-tools{display:flex;flex-direction:column;gap:9px;min-width:0}
-.image-tools input[type=file]{padding:8px;background:white}
-.image-help{font-size:12px;color:var(--muted);line-height:1.5}
-.seller-form-title{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.seller-form-title h2{margin:0}
-footer{text-align:center;margin-top:58px;padding:30px 12px;border-top:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px}
-#cartSection .card,#buyerOrdersSection,#sellerOrdersSection{overflow-x:auto}
-.chat-launcher{position:fixed;right:22px;bottom:22px;z-index:1000;width:60px;height:60px;border:0;border-radius:20px;background:var(--accent);color:#2b1c48;font-size:23px;box-shadow:0 14px 32px #34205d32;display:grid;place-items:center}
-.chat-launcher:hover{background:#ff936f;transform:translateY(-3px)}
-.chat-panel{position:fixed;right:22px;bottom:94px;z-index:1000;width:min(380px,calc(100vw - 28px));height:min(530px,calc(100vh - 130px));background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 70px #21174635;display:flex;flex-direction:column;overflow:hidden}
-.chat-header{display:flex;align-items:center;gap:11px;padding:16px;background:var(--ink);color:#fff}
-.chat-avatar{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:#ffffff20;font-size:19px}
-.chat-heading{flex:1}.chat-heading strong{display:block;font-size:15px}.chat-heading span{font-size:12px;color:#d8d3e9}
-.chat-close{background:#ffffff18;border:1px solid #ffffff30;color:#fff;padding:7px 10px}
-.chat-messages{flex:1;overflow-y:auto;padding:15px;background:#f8f6fc;display:flex;flex-direction:column;gap:10px}
-.chat-bubble{max-width:88%;padding:11px 13px;border-radius:15px;font-size:13px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
-.chat-bubble.bot{align-self:flex-start;background:#eee9fb;color:var(--ink);border-bottom-left-radius:5px}
-.chat-bubble.user{align-self:flex-end;background:var(--brand);color:#fff;border-bottom-right-radius:5px}
-.chat-quick{display:flex;gap:7px;flex-wrap:wrap;padding:0 13px 12px;background:#fff}
-.chat-quick button{font-size:12px;padding:7px 10px;border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:999px;box-shadow:none}
-.chat-quick button:hover{background:#f0edfa;transform:none}
-.chat-compose{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff}
-.chat-compose input{min-width:0;font-size:13px;padding:10px 12px}
-.chat-compose button{padding:10px 13px}
-.chat-note{font-size:10px;color:#89869a;padding:0 13px 10px;background:#fff}
-@media(max-width:1050px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-img{width:140px;height:165px}.seller-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){header{padding:12px 4%;align-items:flex-start;flex-direction:column;gap:10px}nav{width:100%;justify-content:flex-start;gap:5px}nav button{padding:8px 11px;font-size:12px}.container{width:94%;margin-top:20px}.hero{min-height:280px;padding:28px;border-radius:23px}.hero-img{display:none}.hero h1{font-size:clamp(31px,7vw,43px)}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.product{padding:11px}.product img{height:180px}.row{grid-template-columns:1fr}.card{padding:21px}.toolbar{padding:10px}.toolbar>input{max-width:none;width:100%;min-width:0}.seller-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}table{min-width:580px}}
-@media(max-width:480px){header h2{font-size:23px}.container{width:93%}.hero{padding:23px}.hero h1{font-size:32px;letter-spacing:-1.2px}.hero p{font-size:14px}.products{grid-template-columns:1fr}.product{padding:13px}.product img{height:230px}.seller-product-grid{grid-template-columns:1fr}.image-uploader{grid-template-columns:1fr}.image-preview{width:100%;height:180px}.auth-box{margin:24px auto;padding:22px}.chat-launcher{right:14px;bottom:14px}.chat-panel{right:10px;bottom:82px;width:calc(100vw - 20px);height:min(520px,calc(100vh - 105px))}}
+:root{--purple:#6246e5;--purple-dark:#4930bc;--ink:#1f2030;--muted:#77798c;--paper:#f7f7fb;--line:#e8e8f1;--orange:#ff805e;--mint:#d9f6e7;--white:#fff;--shadow:0 16px 44px rgba(35,30,78,.08);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,"Segoe UI",Arial,sans-serif}button,input,select,textarea{font:inherit}button{border:0;border-radius:12px;background:var(--purple);color:white;padding:11px 16px;font-weight:750;cursor:pointer;transition:.18s ease}button:hover{background:var(--purple-dark);transform:translateY(-1px);box-shadow:0 8px 18px #6246e526}button:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #c1b7ff;outline-offset:3px}a{color:var(--purple);font-weight:750;text-decoration:none}a:hover{text-decoration:underline}.hidden{display:none!important}
+header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:82px;padding:14px max(4%,calc((100% - 1340px)/2));background:#ffffffed;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+header h2{margin:0;cursor:pointer;white-space:nowrap;font-size:25px;font-weight:950;letter-spacing:-1.2px}header h2:before{content:"N";display:inline-grid;place-items:center;width:40px;height:40px;margin-right:10px;background:var(--purple);color:#fff;border-radius:14px;font-size:23px;vertical-align:middle;box-shadow:0 8px 18px #6246e52b}
+nav{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}nav button{background:transparent;color:#505166;border:1px solid transparent;padding:9px 13px;font-size:13px;box-shadow:none}nav button:hover{background:#f0edff;color:var(--purple);border-color:#e7e1ff;transform:none;box-shadow:none}nav button:last-child{background:var(--ink);color:#fff}nav button:last-child:hover{background:var(--purple)}
+.container{width:min(1340px,92%);margin:32px auto 68px;min-height:58vh}#message:empty{display:none}.message{max-width:900px;margin:0 auto 20px;padding:13px 16px;border:1px solid #bfe8d3;border-radius:14px;background:#edfbf3;color:#176044;font-weight:700}
+.card{padding:27px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}section h2{letter-spacing:-.8px}.small{font-size:13px;color:var(--muted);line-height:1.65}
+.auth-box{position:relative;overflow:hidden;width:min(500px,100%);margin:46px auto;padding:38px}.auth-box:before{content:"NITHYAMART  /  ACCOUNT ACCESS";display:block;position:relative;z-index:1;margin-bottom:14px;color:var(--purple);font-size:10px;font-weight:950;letter-spacing:1.7px}.auth-box:after{content:"";position:absolute;right:-50px;top:-65px;width:155px;height:155px;background:#f0edff;border-radius:50%}.auth-box h2{position:relative;z-index:1;margin:0 0 8px;font-size:32px;line-height:1.2;letter-spacing:-1.2px}.auth-box>button{width:100%;margin-top:17px;min-height:46px}.auth-box .small{margin-top:18px}
+label{display:block;margin:16px 0 7px;font-size:12px;font-weight:850;color:#55556c}input,select,textarea{width:100%;border:1px solid #dfdfec;border-radius:12px;padding:13px 14px;background:#fff;color:var(--ink);font-size:14px;outline:none;transition:border-color .18s,box-shadow .18s}input:focus,select:focus,textarea:focus{border-color:#9a88f4;box-shadow:0 0 0 4px #6246e512}input::placeholder,textarea::placeholder{color:#aaaabc}textarea{min-height:100px;resize:vertical}.password-box,.password-wrap{display:flex;gap:8px;align-items:stretch}.password-box input,.password-wrap input{flex:1;min-width:0}.password-box .show-password,.password-toggle{width:auto;min-width:74px;margin:0;padding:0 12px;background:#f0edff;color:var(--purple);border:1px solid #e4defd;box-shadow:none}.password-box .show-password:hover,.password-toggle:hover{background:#e4ddff;transform:none;box-shadow:none}
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:30px;overflow:hidden;min-height:350px;margin-bottom:30px;padding:clamp(30px,5vw,64px);border-radius:30px;background:linear-gradient(115deg,#201842,#3d2a83 57%,#7258ed);color:white;box-shadow:0 24px 55px #30205f26}.hero:before{content:"";position:absolute;z-index:-1;right:8%;top:9%;width:230px;height:230px;border-radius:50%;background:linear-gradient(145deg,#ffc19b,var(--orange));box-shadow:0 0 0 28px #ffffff0b,0 0 0 65px #ffffff08}.hero:after{content:"";position:absolute;z-index:-1;right:5%;bottom:-170px;width:350px;height:350px;border:1px solid #ffffff2b;border-radius:50%;box-shadow:0 0 0 34px #ffffff08,0 0 0 74px #ffffff05}.hero>div:first-child{max-width:780px}.hero h1{max-width:740px;margin:16px 0;font-size:clamp(36px,5vw,62px);line-height:1.02;letter-spacing:-2.5px}.hero p{max-width:650px;margin:0;color:#e6e2ff;font-size:15px;line-height:1.85}.hero .badge{display:inline-block;background:#fff;color:var(--purple);padding:7px 12px;border-radius:7px;font-size:10px;letter-spacing:1.3px;font-weight:950}.hero-img{z-index:1;flex:none;width:165px;height:195px;border:1px solid #ffffff55;border-radius:26px;background:linear-gradient(145deg,#ffffff42,#ffffff0b);transform:rotate(7deg);box-shadow:inset 0 0 40px #ffffff12,0 24px 50px #150f3235}.hero-img:before{content:"NM";display:grid;place-items:center;width:100%;height:100%;font-size:52px;font-weight:950;letter-spacing:-5px;color:#fff}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:24px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 7px 22px #29205208}.toolbar>input{flex:1;max-width:510px;min-width:220px;background:#faf9fd}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{background:#fff;color:#57566c;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12px;box-shadow:none}.chip.active,.chip:hover{background:var(--purple);color:#fff;border-color:var(--purple);transform:none;box-shadow:none}.badge{display:inline-block;border-radius:8px;padding:5px 9px;background:#eeeaff;color:var(--purple);font-size:12px;font-weight:850}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product{display:flex;flex-direction:column;min-width:0;overflow:hidden;padding:12px;background:#fff;border:1px solid var(--line);border-radius:20px;transition:transform .2s,border-color .2s,box-shadow .2s}.product:hover{transform:translateY(-5px);border-color:#c9bdf8;box-shadow:0 18px 38px #30205f15}.product img{display:block;width:100%;height:215px;object-fit:contain;margin:0 0 13px;padding:14px;border-radius:14px;background:linear-gradient(145deg,#f8f7fc,#efecf9)}.product h3{margin:4px 0 7px;font-size:16px;line-height:1.4;overflow-wrap:anywhere}.product p{margin:5px 0;line-height:1.5}.product .small{display:-webkit-box;min-height:38px;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical}.product .price{margin-top:auto;padding-top:10px;color:var(--purple);font-size:23px;font-weight:950;letter-spacing:-.6px}.product .stock{color:#16805d;font-size:12px;font-weight:800}.product .seller{font-size:12px;color:var(--muted)}.product input[type=number]{margin-top:8px}.product button{width:100%;margin-top:10px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.seller-form-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.seller-form-title h2{margin:0}.image-uploader{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center;margin:12px 0 16px;padding:15px;border:1px dashed #c9c1e5;border-radius:15px;background:#faf9fd}.image-preview{width:150px;height:130px;object-fit:contain;background:#f0edff;border:1px solid var(--line);border-radius:12px}.image-tools{display:flex;flex-direction:column;gap:9px;min-width:0}.image-tools input[type=file]{padding:8px;background:#fff}.image-help{font-size:12px;color:var(--muted);line-height:1.5}
+.seller-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}.seller-product-card{display:flex;flex-direction:column;gap:9px;min-width:0;padding:16px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 7px 22px #29205208;transition:.2s}.seller-product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.seller-product-card img{width:100%;height:175px;object-fit:contain;background:#f1eef9;border-radius:12px}.seller-product-card h3{margin:4px 0;overflow-wrap:anywhere}.seller-product-card .actions{margin-top:auto}.seller-product-card .actions button{flex:1}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}th,td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}th{background:#f0edff;color:#4c4968;font-size:11px;font-weight:950;letter-spacing:.7px;text-transform:uppercase}tr:last-child td{border-bottom:0}#cartSection .card,#buyerOrdersSection,#sellerOrdersSection{overflow-x:auto}.password-rules{margin-top:8px;padding:12px 14px;border-radius:12px;background:#f7f5fc;border:1px solid var(--line);font-size:13px;line-height:1.7}.good{color:#16805d}.bad{color:var(--danger)}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{width:auto}.empty{grid-column:1/-1;text-align:center;padding:48px 20px;border:1px dashed #c9c1e5;background:#fff;border-radius:18px;color:var(--muted)}
+footer{text-align:center;margin-top:55px;padding:28px 12px;border-top:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px}
+.chat-launcher{position:fixed;right:22px;bottom:22px;z-index:1000;width:60px;height:60px;border-radius:20px;background:var(--orange);color:#2a2044;font-size:23px;box-shadow:0 14px 32px #30205f30;display:grid;place-items:center}.chat-launcher:hover{background:#ff987d;transform:translateY(-3px)}.chat-panel{position:fixed;right:22px;bottom:94px;z-index:1000;width:min(380px,calc(100vw - 28px));height:min(530px,calc(100vh - 130px));background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 70px #21174635;display:flex;flex-direction:column;overflow:hidden}.chat-header{display:flex;align-items:center;gap:11px;padding:16px;background:var(--ink);color:#fff}.chat-avatar{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:#ffffff20;font-size:19px}.chat-heading{flex:1}.chat-heading strong{display:block;font-size:15px}.chat-heading span{font-size:12px;color:#d8d3e9}.chat-close{background:#ffffff18;border:1px solid #ffffff30;color:#fff;padding:7px 10px}.chat-messages{flex:1;overflow-y:auto;padding:15px;background:#f8f6fc;display:flex;flex-direction:column;gap:10px}.chat-bubble{max-width:88%;padding:11px 13px;border-radius:15px;font-size:13px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}.chat-bubble.bot{align-self:flex-start;background:#eee9fb;color:var(--ink);border-bottom-left-radius:5px}.chat-bubble.user{align-self:flex-end;background:var(--purple);color:#fff;border-bottom-right-radius:5px}.chat-quick{display:flex;gap:7px;flex-wrap:wrap;padding:0 13px 12px;background:#fff}.chat-quick button{font-size:12px;padding:7px 10px;border:1px solid var(--line);background:#fff;color:var(--purple);border-radius:999px;box-shadow:none}.chat-quick button:hover{background:#f0edff;transform:none}.chat-compose{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff}.chat-compose input{min-width:0;font-size:13px;padding:10px 12px}.chat-compose button{padding:10px 13px}.chat-note{font-size:10px;color:#89869a;padding:0 13px 10px;background:#fff}
+@media(max-width:1050px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-img{width:135px;height:160px}.seller-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){header{padding:12px 4%;align-items:flex-start;flex-direction:column;gap:10px}nav{width:100%;justify-content:flex-start;gap:4px}nav button{padding:8px 10px;font-size:12px}.container{width:94%;margin-top:20px}.hero{min-height:270px;padding:27px;border-radius:23px}.hero-img{display:none}.hero h1{font-size:clamp(31px,7vw,43px)}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.product{padding:11px}.product img{height:180px}.row{grid-template-columns:1fr}.card{padding:21px}.toolbar{padding:10px}.toolbar>input{max-width:none;width:100%;min-width:0}.seller-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}table{min-width:580px}}
+@media(max-width:480px){header h2{font-size:23px}.container{width:93%}.hero{padding:23px}.hero h1{font-size:32px;letter-spacing:-1.2px}.hero p{font-size:14px}.products,.seller-product-grid{grid-template-columns:1fr}.product{padding:13px}.product img{height:230px}.image-uploader{grid-template-columns:1fr}.image-preview{width:100%;height:180px}.auth-box{margin:24px auto;padding:22px}.chat-launcher{right:14px;bottom:14px}.chat-panel{right:10px;bottom:82px;width:calc(100vw - 20px);height:min(520px,calc(100vh - 105px))}}
 </style>
-
-
-
 </head>
 <body>
-
 <header>
-    <h2 onclick="showProducts()">NithyaMart</h2>
-
-    <nav id="guestNav">
-        <button onclick="showLogin()">Login</button>
-        <button onclick="showRegister()">Register</button>
-    </nav>
-
-    <nav id="buyerNav" class="hidden">
-        <button onclick="showProducts()">Products</button>
-        <button onclick="showCart()">Cart <span id="cartCount" class="badge">0</span></button>
-        <button onclick="showBuyerOrders()">Orders</button>
-        <button onclick="logout()">Logout</button>
-    </nav>
-
-    <nav id="sellerNav" class="hidden">
-        <button onclick="showSellerDashboard()">My Products</button>
-        <button onclick="showSellerOrders()">Orders</button>
-        <button onclick="logout()">Logout</button>
-    </nav>
-
-    <nav id="adminNav" class="hidden">
-        <button onclick="showAdminDashboard()">Admin Panel</button>
-        <button onclick="logout()">Logout</button>
-    </nav>
+  <h2 onclick="showProducts()" aria-label="NithyaMart home">NithyaMart</h2>
+  <nav id="guestNav" aria-label="Guest navigation"><button onclick="showLogin()">Login</button><button onclick="showRegister()">Create account</button></nav>
+  <nav id="buyerNav" class="hidden" aria-label="Buyer navigation"><button onclick="showProducts()">Shop</button><button onclick="showCart()">Cart <span id="cartCount" class="badge">0</span></button><button onclick="showBuyerOrders()">My orders</button><button onclick="logout()">Logout</button></nav>
+  <nav id="sellerNav" class="hidden" aria-label="Seller navigation"><button onclick="showSellerDashboard()">My products</button><button onclick="showSellerOrders()">Orders</button><button onclick="logout()">Logout</button></nav>
+  <nav id="adminNav" class="hidden" aria-label="Admin navigation"><button onclick="showAdminDashboard()">Admin panel</button><button onclick="logout()">Logout</button></nav>
 </header>
+<main class="container">
+  <div id="message" role="status" aria-live="polite"></div>
 
-<div class="container">
+  <section id="loginSection" class="card auth-box">
+    <h2>Welcome back.</h2><p class="small">Sign in to continue shopping with NithyaMart.</p>
+    <label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="loginPassword">Password</label><div class="password-wrap"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">Show</button></div>
+    <button onclick="login()">Sign in to your account</button>
+    <p class="small"><a href="#" onclick="showForgotPassword()">Forgot password?</a></p><p class="small">New to NithyaMart? <a href="#" onclick="showRegister()">Create an account</a></p>
+  </section>
 
-    <div id="message"></div>
+  <section id="forgotSection" class="card auth-box hidden"><h2>Reset your password</h2><p class="small">Enter your registered email and we’ll send a reset OTP.</p><label for="forgotEmail">Email address</label><input id="forgotEmail" type="email" autocomplete="email" placeholder="Enter registered email"><button onclick="sendResetOtp()">Send reset OTP</button><p class="small"><a href="#" onclick="showLogin()">Back to sign in</a></p></section>
+  <section id="resetOtpSection" class="card auth-box hidden"><h2>Verify reset code</h2><p class="small">Enter the six-digit code sent to your email.</p><label for="resetOtpEmail">Email address</label><input id="resetOtpEmail" type="email" readonly><label for="resetOtpCode">One-time password</label><input id="resetOtpCode" type="text" inputmode="numeric" maxlength="6" placeholder="000000"><button onclick="verifyResetOtp()">Verify code</button><button class="password-toggle" onclick="sendResetOtp(true)">Resend code</button></section>
+  <section id="resetPasswordSection" class="card auth-box hidden"><h2>Create a new password</h2><label for="newPassword">New password</label><div class="password-box"><input id="newPassword" type="password" autocomplete="new-password" placeholder="Enter new password"><button type="button" class="show-password" onclick="togglePassword('newPassword', this)">Show</button></div><button onclick="resetPassword()">Update password</button></section>
+  <section id="registerSection" class="card auth-box hidden"><h2>Create your account.</h2><p class="small">A few details to get you started.</p><label for="regName">Full name</label><input id="regName" autocomplete="name" placeholder="Enter your name"><label for="regEmail">Email address</label><input id="regEmail" type="email" autocomplete="email" placeholder="you@example.com"><label for="regMobile">Mobile number</label><input id="regMobile" type="tel" maxlength="10" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number"><label for="regPassword">Password</label><div class="password-wrap"><input id="regPassword" type="password" autocomplete="new-password" placeholder="Create a password"><button type="button" class="password-toggle" onclick="togglePassword('regPassword', this)">Show</button></div><label for="regRole">I want to</label><select id="regRole"><option value="BUYER">Shop as a buyer</option><option value="SELLER">Sell products</option></select><button onclick="register()">Create account</button><p class="small">Already have an account? <a href="#" onclick="showLogin()">Sign in</a></p></section>
+  <section id="otpSection" class="card auth-box hidden"><h2>Check your inbox.</h2><p class="small">Enter the six-digit OTP sent to your email to activate your account.</p><label for="otpEmail">Email address</label><input id="otpEmail" type="email" readonly><label for="otpCode">Verification code</label><input id="otpCode" type="text" inputmode="numeric" maxlength="6" placeholder="000000"><button onclick="verifyOtp()">Verify and activate</button><button class="password-toggle" onclick="resendOtp()">Resend OTP</button><p class="small">Already verified? <a href="#" onclick="showLogin()">Sign in</a></p></section>
 
-    <!-- LOGIN -->
-    <section id="loginSection" class="card auth-box">
-        <h2>Login</h2>
+  <section id="productsSection" class="hidden">
+    <div class="hero"><div><span class="badge">THE NITHYAMART MARKETPLACE</span><h1>Everyday finds. A little more delightful.</h1><p>Explore products from sellers, discover something useful, and make your next purchase in just a few steps. Search, compare, add to cart and track your orders in one place.</p></div><div class="hero-img" aria-hidden="true"></div></div>
+    <div class="toolbar"><input id="productSearch" aria-label="Search products" placeholder="Search products, category or seller…" oninput="filterProducts()"><div class="chips" aria-label="Product categories"><button class="chip active" onclick="setCategory('ALL',this)">Everything</button><button class="chip" onclick="setCategory('Electronics',this)">Electronics</button><button class="chip" onclick="setCategory('Accessories',this)">Accessories</button><button class="chip" onclick="setCategory('Other',this)">Other</button></div></div>
+    <div id="productsList" class="products"></div>
+  </section>
 
-        <label>Email</label>
-        <input id="loginEmail" type="email" placeholder="Enter email">
+  <section id="cartSection" class="hidden"><div class="card"><p class="small">YOUR SELECTION</p><h2>Shopping cart</h2><div id="cartList"></div><h3 id="cartTotal">Total: ₹0</h3><button onclick="placeOrder()">Continue to checkout</button></div></section>
+  <section id="buyerOrdersSection" class="hidden"><p class="small">PURCHASE HISTORY</p><h2>My orders</h2><div id="buyerOrders"></div></section>
 
-        <label>Password</label>
-        <div class="password-wrap">
-            <input id="loginPassword" type="password" placeholder="Enter password">
-            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">Show</button>
-        </div>
-
-        <button onclick="login()">Login</button>
-<p class="small"><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
-
-        <p class="small">
-            Don't have an account?
-            <a href="#" onclick="showRegister()">Register</a>
-        </p>
-    </section>
-
-
-    <!-- FORGOT PASSWORD -->
-    <section id="forgotSection" class="card auth-box hidden">
-        <h2>Forgot Password</h2>
-        <p class="small">Enter your registered email to receive a reset OTP.</p>
-
-        <label>Email</label>
-        <input id="forgotEmail" type="email" placeholder="Enter registered email">
-
-        <button onclick="sendResetOtp()">Send OTP</button>
-
-        <p class="small">
-            <a href="#" onclick="showLogin()">Back to Login</a>
-        </p>
-    </section>
-
-    <!-- RESET OTP -->
-    <section id="resetOtpSection" class="card auth-box hidden">
-        <h2>Verify Reset OTP</h2>
-
-        <label>Email</label>
-        <input id="resetOtpEmail" type="email" readonly>
-
-        <label>OTP</label>
-        <input id="resetOtpCode"
-               type="text"
-               inputmode="numeric"
-               maxlength="6"
-               placeholder="Enter 6-digit OTP">
-
-        <button onclick="verifyResetOtp()">Verify OTP</button>
-        <button onclick="sendResetOtp(true)">Resend OTP</button>
-    </section>
-
-    <!-- NEW PASSWORD -->
-    <section id="resetPasswordSection" class="card auth-box hidden">
-        <h2>Set New Password</h2>
-
-        <label>New Password</label>
-        <div class="password-box">
-            <input id="newPassword"
-                   type="password"
-                   placeholder="Enter new password">
-            <button type="button"
-                    class="show-password"
-                    onclick="togglePassword('newPassword', this)">
-                Show
-            </button>
-        </div>
-
-        <button onclick="resetPassword()">Change Password</button>
-    </section>
-
-    <!-- REGISTER -->
-    <section id="registerSection" class="card auth-box hidden">
-        <h2>Register</h2>
-
-        <label>Name</label>
-        <input id="regName" placeholder="Enter name">
-
-        <label>Email</label>
-        <input id="regEmail" type="email" placeholder="Enter email address">
-
-        <label>Mobile Number</label>
-        <input id="regMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="Enter 10-digit mobile number">
-
-        <label>Password</label>
-        <div class="password-wrap">
-            <input id="regPassword" type="password" placeholder="Enter password">
-            <button type="button" class="password-toggle" onclick="togglePassword('regPassword', this)">Show</button>
-        </div>
-
-        <label>Account Type</label>
-        <select id="regRole">
-            <option value="BUYER">Buyer</option>
-            <option value="SELLER">Seller</option>
-        </select>
-
-        <button onclick="register()">Register</button>
-
-        <p class="small">
-            Already registered?
-            <a href="#" onclick="showLogin()">Login</a>
-        </p>
-    </section>
-
-
-    <!-- OTP VERIFICATION -->
-    <section id="otpSection" class="card auth-box hidden">
-        <h2>Verify OTP</h2>
-        <p class="small">
-            A 6-digit OTP was sent to your email. Enter it below to activate your account.
-        </p>
-
-        <label>Email</label>
-        <input id="otpEmail" type="email" readonly>
-
-        <label>OTP</label>
-        <input id="otpCode"
-               type="text"
-               inputmode="numeric"
-               maxlength="6"
-               placeholder="Enter 6-digit OTP">
-
-        <button onclick="verifyOtp()">Verify OTP</button>
-        <button onclick="resendOtp()">Resend OTP</button>
-
-        <p class="small">
-            Already verified?
-            <a href="#" onclick="showLogin()">Login</a>
-        </p>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="productsSection" class="hidden">
-        <div class="hero">
-            <div>
-                <span class="badge">NITHYAMART MARKETPLACE</span>
-                <h1>Good finds. Better prices. All in one place.</h1>
-                <p>Discover everyday essentials, explore new favourites, and shop confidently. Search the marketplace, compare products, and keep your orders together in one simple shopping experience.</p>
-            </div>
-            <div class="hero-img"></div>
-        </div>
-
-        <div class="toolbar">
-            <input id="productSearch" placeholder="Search products, category or seller..." oninput="filterProducts()">
-            <div class="chips">
-                <button class="chip active" onclick="setCategory('ALL',this)">All</button>
-                <button class="chip" onclick="setCategory('Electronics',this)">Electronics</button>
-                <button class="chip" onclick="setCategory('Accessories',this)">Accessories</button>
-                <button class="chip" onclick="setCategory('Other',this)">Other</button>
-            </div>
-        </div>
-
-        <div id="productsList" class="products"></div>
-    </section>
-
-    <!-- CART -->
-    <section id="cartSection" class="hidden">
-        <div class="card">
-            <h2>My Cart</h2>
-            <div id="cartList"></div>
-            <h3 id="cartTotal">Total: ₹0</h3>
-            <button onclick="placeOrder()">Place Order</button>
-        </div>
-    </section>
-
-    <!-- BUYER ORDERS -->
-    <section id="buyerOrdersSection" class="hidden">
-        <h2>My Orders</h2>
-        <div id="buyerOrders"></div>
-    </section>
-
-    <!-- SELLER DASHBOARD -->
-    <section id="sellerSection" class="hidden">
-
-        <div class="card">
-            <div class="seller-form-title"><h2 id="productFormTitle">Add Product</h2><span class="small">Add clear photos to help buyers choose</span></div>
-
-            <div class="row">
-                <div>
-                    <label>Name</label>
-                    <input id="productName">
-                </div>
-
-                <div>
-                    <label>Category</label>
-                    <input id="productCategory">
-                </div>
-            </div>
-
-            <label>Description</label>
-            <textarea id="productDescription"></textarea>
-
-            <div class="row">
-                <div>
-                    <label>Price</label>
-                    <input id="productPrice" type="number" min="0">
-                </div>
-
-                <div>
-                    <label>Stock</label>
-                    <input id="productStock" type="number" min="0">
-                </div>
-            </div>
-
-            <label>Product Image</label>
-            <div class="image-uploader">
-                <img id="productImagePreview" class="image-preview" src="https://placehold.co/300x260?text=Product+Photo" alt="Product image preview">
-                <div class="image-tools">
-                    <input id="productImageFile" type="file" accept="image/jpeg,image/png,image/webp">
-                    <span class="image-help">Choose JPG, PNG or WebP (max 5 MB). The image is resized before saving.</span>
-                    <label for="productImage">Or paste an image URL</label>
-                    <input id="productImage" type="url" placeholder="https://example.com/product.jpg">
-                    <button type="button" class="password-toggle" onclick="clearProductImage()">Remove image</button>
-                </div>
-            </div>
-
-            <button onclick="saveProduct()" id="productSaveButton">
-                Add Product
-            </button>
-
-            <button onclick="cancelEdit()" id="cancelEditButton" class="hidden">
-                Cancel Edit
-            </button>
-        </div>
-
-        <h2>My Products</h2>
-        <div id="sellerProducts"></div>
-
-    </section>
-
-    <!-- SELLER ORDERS -->
-    <section id="sellerOrdersSection" class="hidden">
-        <h2>Seller Orders</h2>
-        <div id="sellerOrders"></div>
-    </section>
-
-    <!-- PRODUCT REVIEWS -->
-    <section id="reviewsSection" class="hidden">
-        <div class="card">
-            <button class="password-toggle" onclick="showProducts()">← Back to products</button>
-            <h2 id="reviewsProductTitle">Product reviews</h2>
-            <div id="reviewsList"></div>
-            <div id="reviewForm" class="hidden">
-                <h3>Write a review</h3>
-                <label>Rating</label>
-                <select id="reviewRating"><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Bad</option></select>
-                <label>Comment</label>
-                <textarea id="reviewComment" maxlength="1000" placeholder="Share your experience after ordering this product"></textarea>
-                <button onclick="submitProductReview()">Submit review</button>
-            </div>
-            <p class="small">Only buyers who have ordered this product can submit a review.</p>
-        </div>
-    </section>
-
-    <!-- ADMIN PANEL -->
-    <section id="adminSection" class="hidden">
-        <h2>Admin Panel</h2>
-        <div class="card">
-            <h3>All users</h3>
-            <div id="adminUsers"><p>Loading users…</p></div>
-        </div>
-        <div class="card">
-            <h3>All orders</h3>
-            <div id="adminOrders"><p>Loading orders…</p></div>
-        </div>
-        <div class="card">
-            <h3>Product moderation</h3>
-            <div id="adminProducts"><p>Loading products…</p></div>
-        </div>
-    </section>
-
-</div>
-
-<footer>© 2026 NithyaMart · Shopping made simpler, every day.</footer>
-
-<!-- NithyaMart help chat -->
+  <section id="sellerSection" class="hidden">
+    <div class="card"><div class="seller-form-title"><div><p class="small">SELLER WORKSPACE</p><h2 id="productFormTitle">Add a product</h2></div><span class="small">Use clear photos and accurate stock details.</span></div>
+      <div class="row"><div><label for="productName">Product name</label><input id="productName" placeholder="e.g. Wireless headphones"></div><div><label for="productCategory">Category</label><input id="productCategory" placeholder="e.g. Electronics"></div></div>
+      <label for="productDescription">Description</label><textarea id="productDescription" placeholder="Describe the product and its key details"></textarea>
+      <div class="row"><div><label for="productPrice">Price (₹)</label><input id="productPrice" type="number" min="0" step="0.01" placeholder="0.00"></div><div><label for="productStock">Available stock</label><input id="productStock" type="number" min="0" step="1" placeholder="Quantity"></div></div>
+      <label>Product photo</label><div class="image-uploader"><img id="productImagePreview" class="image-preview" src="https://placehold.co/300x260?text=Product+Photo" alt="Product image preview"><div class="image-tools"><input id="productImageFile" type="file" accept="image/jpeg,image/png,image/webp"><span class="image-help">JPG, PNG or WebP, max 5 MB. The image is resized before saving.</span><label for="productImage">Or add an image URL</label><input id="productImage" type="url" placeholder="https://example.com/product.jpg"><button type="button" class="password-toggle" onclick="clearProductImage()">Remove photo</button></div></div>
+      <div class="actions"><button onclick="saveProduct()" id="productSaveButton">Add product</button><button onclick="cancelEdit()" id="cancelEditButton" class="password-toggle hidden">Cancel edit</button></div>
+    </div><h2>Products you’re selling</h2><div id="sellerProducts"></div>
+  </section>
+  <section id="sellerOrdersSection" class="hidden"><p class="small">SELLER WORKSPACE</p><h2>Customer orders</h2><div id="sellerOrders"></div></section>
+  <section id="reviewsSection" class="hidden"><div class="card"><button class="password-toggle" onclick="showProducts()">← Back to marketplace</button><h2 id="reviewsProductTitle">Product reviews</h2><div id="reviewsList"></div><div id="reviewForm" class="hidden"><h3>Write a review</h3><label for="reviewRating">Your rating</label><select id="reviewRating"><option value="5">5 — Excellent</option><option value="4">4 — Good</option><option value="3">3 — Average</option><option value="2">2 — Poor</option><option value="1">1 — Bad</option></select><label for="reviewComment">Your comments</label><textarea id="reviewComment" maxlength="1000" placeholder="Share your experience after ordering this product"></textarea><button onclick="submitProductReview()">Submit review</button></div><p class="small">Only buyers who have ordered this product can submit a review.</p></div></section>
+  <section id="adminSection" class="hidden"><p class="small">ADMINISTRATION</p><h2>Store overview</h2><div class="card"><h3>Registered users</h3><div id="adminUsers"><p>Loading users…</p></div></div><div class="card"><h3>Orders</h3><div id="adminOrders"><p>Loading orders…</p></div></div><div class="card"><h3>Product moderation</h3><div id="adminProducts"><p>Loading products…</p></div></div></section>
+</main>
+<footer>© 2026 NithyaMart · Shopping made simpler.</footer>
 <button id="chatLauncher" class="chat-launcher" type="button" aria-label="Open NithyaMart help chat" aria-expanded="false" onclick="toggleChat()">✦</button>
-<section id="chatPanel" class="chat-panel hidden" aria-label="NithyaMart help chat">
-  <div class="chat-header">
-    <div class="chat-avatar">✦</div>
-    <div class="chat-heading"><strong>NithyaMart AI</strong><span>AI shopping assistant</span></div>
-    <button class="chat-close" type="button" aria-label="Close chat" onclick="toggleChat(false)">✕</button>
-  </div>
-  <div id="chatMessages" class="chat-messages" aria-live="polite">
-    <div class="chat-bubble bot">Hi! 👋 I’m NithyaMart AI. Ask me in English or Tanglish about shopping, cart, orders, account/OTP, or seller products. I’ll be clear when I can’t verify live account details.</div>
-  </div>
-  <div class="chat-quick">
-    <button type="button" onclick="chatQuick('How do I place an order?')">Place order</button>
-    <button type="button" onclick="chatQuick('How do I track my order?')">My orders</button>
-    <button type="button" onclick="chatQuick('How do I add a product as a seller?')">Seller help</button>
-    <button type="button" onclick="chatQuick('I need login or registration help')">Account help</button>
-  </div>
-  <div class="chat-compose">
-    <input id="chatInput" type="text" maxlength="400" placeholder="Ask a question…" aria-label="Type your question">
-    <button id="chatSendButton" type="button" onclick="sendChatMessage()">Send</button>
-  </div>
-  <div class="chat-note">Automated help · It cannot view private orders or make changes.</div>
-</section>
-
+<section id="chatPanel" class="chat-panel hidden" aria-label="NithyaMart help chat"><div class="chat-header"><div class="chat-avatar">✦</div><div class="chat-heading"><strong>NithyaMart AI</strong><span>Shopping assistant</span></div><button class="chat-close" type="button" aria-label="Close chat" onclick="toggleChat(false)">✕</button></div><div id="chatMessages" class="chat-messages" aria-live="polite"><div class="chat-bubble bot">Hi! I’m NithyaMart AI. Ask me about shopping, cart, orders, account/OTP or seller products. I’ll be clear when I can’t verify live account details.</div></div><div class="chat-quick"><button type="button" onclick="chatQuick('How do I place an order?')">Place order</button><button type="button" onclick="chatQuick('How do I track my order?')">Track orders</button><button type="button" onclick="chatQuick('How do I add a product as a seller?')">Seller help</button><button type="button" onclick="chatQuick('I need login or registration help')">Account help</button></div><div class="chat-compose"><input id="chatInput" type="text" maxlength="400" placeholder="Ask a question…" aria-label="Type your question"><button id="chatSendButton" type="button" onclick="sendChatMessage()">Send</button></div><div class="chat-note">Automated help · It cannot view private orders or make changes.</div></section>
 
 <script>
 let currentUser = null;
@@ -1642,6 +1253,4 @@ if (chatInput) chatInput.addEventListener("keydown", event => {
 
 checkLogin();
 </script>
-
 </body>
-</html>
