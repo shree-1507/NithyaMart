@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
     pkg-config \
     uuid-dev \
+    zlib1g-dev \
     libdrogon-dev \
     libjsoncpp-dev \
     libcurl4-openssl-dev \
