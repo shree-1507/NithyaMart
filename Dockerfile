@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmariadb-dev-compat \
     libbrotli-dev \
     libhiredis-dev \
+    libyaml-cpp-dev \
     libdrogon-dev \
     libjsoncpp-dev \
     libcurl4-openssl-dev \
