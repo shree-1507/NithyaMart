@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     uuid-dev \
     zlib1g-dev \
+    libsqlite3-dev \
     libdrogon-dev \
     libjsoncpp-dev \
     libcurl4-openssl-dev \
