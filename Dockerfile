@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
     pkg-config \
     libdrogon-dev \
+    libjsoncpp-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
