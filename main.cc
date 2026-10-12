@@ -21,6 +21,11 @@ private:
     static PGconn *connect()
     {
         const char *databaseUrl = std::getenv("NITHYAMART_DATABASE_URL");
+        if (!databaseUrl || !*databaseUrl)
+        {
+            // Render PostgreSQL commonly exposes its connection string as DATABASE_URL.
+            databaseUrl = std::getenv("DATABASE_URL");
+        }
         if (databaseUrl && *databaseUrl)
         {
             return PQconnectdb(databaseUrl);
@@ -3034,8 +3039,9 @@ int main()
     // ---------------------------------------------------------
     // SERVER
     // ---------------------------------------------------------
-    if (!std::getenv("NITHYAMART_DATABASE_URL") &&
-        !std::getenv("NITHYAMART_DB_PASSWORD"))
+    if ((!std::getenv("NITHYAMART_DATABASE_URL") || !*std::getenv("NITHYAMART_DATABASE_URL")) &&
+        (!std::getenv("DATABASE_URL") || !*std::getenv("DATABASE_URL")) &&
+        (!std::getenv("NITHYAMART_DB_PASSWORD") || !*std::getenv("NITHYAMART_DB_PASSWORD")))
     {
         std::cerr << "Warning: Set NITHYAMART_DATABASE_URL for cloud PostgreSQL "
                   << "or NITHYAMART_DB_PASSWORD for local PostgreSQL."
