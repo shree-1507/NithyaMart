@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     uuid-dev \
     zlib1g-dev \
     libsqlite3-dev \
+    default-libmysqlclient-dev \
     libdrogon-dev \
     libjsoncpp-dev \
     libcurl4-openssl-dev \
